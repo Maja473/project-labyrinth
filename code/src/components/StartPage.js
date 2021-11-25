@@ -5,7 +5,7 @@ import { nextStep } from "reducers/game";
 import styled from "styled-components";
 import TheGame from "./TheGame";
 import { game } from "../reducers/game";
-import { useNavigate } from 'react-router-dom'
+
 
 const StartCard = styled.div`
   background: lightblue;
@@ -38,12 +38,7 @@ const StartCard = styled.div`
   }
 `;
 
-const navigate = useNavigate()
 
-const onRestart = () => {
-    dispatch(game.actions.restartGame())
-    navigate('/')
-  }
 
 
 const StartPage = () => {
@@ -84,7 +79,6 @@ const StartPage = () => {
             <button type="submit">Start</button>
           </form>
         </section>
-        <StartOverButton onClick={onRestart}>Start over</StartOverButton>
         <TheGame />
       </StartCard>
       {/* {game?.actions?.map((item) => (
