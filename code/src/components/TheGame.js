@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nextStep } from "reducers/game";
+import { useNavigate } from 'react-router-dom'
 
 //göra så att theStart inte syns
 
@@ -8,6 +9,12 @@ import { nextStep } from "reducers/game";
 const TheGame = () => {
   const { game, coordinates } = useSelector((store) => store.game.currentPosition);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
+
+  const onRestart = () => {
+    dispatch(game.actions.restartGame())
+    navigate('/')
+  }
 
   return (
     <>
@@ -25,6 +32,7 @@ const TheGame = () => {
           {item.direction}
         </button>
       ))}
+    <StartOverButton onClick={onRestart}>Start over</StartOverButton>
     </>
   );
 };
